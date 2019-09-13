@@ -25,15 +25,17 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 
 	name, err := os.Hostname()
 	if err != nil {
-		fmt.Printf("Oops: %v\n", err)
-		return
+		 fmt.Printf("Oops: %v\n", err)
+		 return
 	}
+	
 	addrs, err := net.LookupHost(name)
 	if err != nil {
 		fmt.Printf("Oops: %v\n", err)
 		return
 	}
+	
 	for _, a := range addrs {
-		fmt.Fprintf(w, a)
+		fmt.Print(w, a)
 	}  
 }
