@@ -31,7 +31,8 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 	for _, a := range addrs {
 		fmt.Print(w, a)
 	}  
-	fmt.Fprint(w, GetLocalIP)
+	ipaddress := GetLocalIP
+	fmt.Fprint(w, ipaddress)
 }
 
 func GetLocalIP() string {
