@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"log"
+	"net"
 )
 
 const webContent = "Hello World! Coliges!"
@@ -19,5 +20,11 @@ func main() {
 }
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, webContent, addrs)
+	fmt.Fprint(w, webContent)
+	addrs, err := net.LookupHost(name)
+	if err != nil {
+		fmt.Printf("Oops: %v\n", err)
+		return
+	}
+	fmt.Fprint(w, addrs)
 }
